@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="referrer" content="no-referrer" />
+    <title>For You</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="favicon.png" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Manrope:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="is-locked">
+    <svg class="clip-svg" width="0" height="0" aria-hidden="true" focusable="false">
+      <defs>
+        <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
+          <path
+            d="M0.5,0.92
+               C0.5,0.92 0.02,0.58 0.02,0.32
+               C0.02,0.16 0.14,0.06 0.30,0.06
+               C0.39,0.06 0.46,0.11 0.50,0.18
+               C0.54,0.11 0.61,0.06 0.70,0.06
+               C0.86,0.06 0.98,0.16 0.98,0.32
+               C0.98,0.58 0.5,0.92 0.5,0.92 Z"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+
+    <canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+    <section class="gate" id="gate" aria-label="Access">
+      <div class="gate__card">
+        <svg class="gate__heart" viewBox="0 0 32 28" aria-hidden="true">
+          <path
+            d="M16 26.5C16 26.5 2 17.2 2 9.4 2 4.8 5.6 2 9.4 2c2.4 0 4.6 1.2 6.6 3.4C18 3.2 20.2 2 22.6 2 26.4 2 30 4.8 30 9.4c0 7.8-14 17.1-14 17.1z"
+          />
+        </svg>
+        <h1 class="gate__title">Only for you</h1>
+        <p class="gate__hint">Your birth date unlocks the door.</p>
+        <form class="gate__form" id="gate-form" novalidate>
+          <label class="gate__label" for="birthdate">Birth date</label>
+          <input
+            class="gate__input"
+            id="birthdate"
+            name="birthdate"
+            type="text"
+            inputmode="numeric"
+            autocomplete="bday"
+            placeholder="DD.MM.YYYY"
+            maxlength="10"
+            required
+          />
+          <p class="gate__error" id="gate-error" hidden>That's not quite right.</p>
+          <button class="gate__btn" type="submit">Unlock</button>
+        </form>
+      </div>
+    </section>
+
+    <div id="site" hidden>
+      <header class="hero">
+        <div class="hero__photo">
+          <img src="images/anna.png" alt="Lishy" />
+        </div>
+        <div class="hero__content">
+          <p class="hero__name">Lishy</p>
+          <h1 class="hero__title">100 reasons why I love you</h1>
+          <p class="hero__sub">Just for you.</p>
+          <a class="hero__scroll" href="#liste" aria-label="To the reasons">↓</a>
+        </div>
+      </header>
+
+      <main id="liste">
+        <ol class="list" id="reasons-list"></ol>
+      </main>
+
+      <section class="candle-section" id="wish-section" aria-label="Make a wish">
+        <div class="candle-box">
+          <p class="candle-prompt" id="candle-prompt">Close your eyes, make a wish, and blow.</p>
+          <div class="candle-actions">
+            <span class="candle-hint" id="candle-hint">(tap the flame or blow)</span>
+            <button class="mic-toggle-btn" id="mic-toggle-btn" type="button" aria-label="Enable microphone to blow">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></svg>
+              <span>Enable mic to blow</span>
+            </button>
+          </div>
+
+          <div class="candle-stage">
+            <canvas id="candle-canvas" class="candle-canvas" width="300" height="240"></canvas>
+            <div class="candle-wrapper" id="candle-wrapper" role="button" tabindex="0" aria-label="Candle flame. Tap to blow out.">
+              <div class="candle">
+                <div class="flame" id="candle-flame">
+                  <div class="flame__inner"></div>
+                  <div class="flame__glow"></div>
+                </div>
+                <div class="wick"></div>
+                <div class="wax">
+                  <div class="wax__drip"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wish-message" id="wish-message" hidden>
+            <p class="wish-text">May all your dreams come true, my love.</p>
+            <button class="relight-btn" id="relight-btn" type="button">Relight candle 🕯️</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="end">
+        <p class="end__text">And every day brings new ones.<br />I love you.</p>
+        <span class="end__infinity" aria-hidden="true">∞</span>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
