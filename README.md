@@ -97,7 +97,7 @@ The unlock code is verified by comparing the SHA-256 hash of the 8 digits (`DDMM
 2. Generate its SHA-256 hash:
    - **Terminal (macOS/Linux):**
      ```bash
-     echo -n "13022005" | sha256sum
+     echo -n "14092002" | sha256sum
      ```
    - **Terminal (Windows PowerShell):**
      ```powershell
